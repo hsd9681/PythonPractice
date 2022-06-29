@@ -1,35 +1,55 @@
 #배운 내용
-'''round(값1, 값2): 반올림 함수 값2에는 원하는 자리에서 반올림한 결과를 출력
-문자열 포매팅: 문자열 안에 어떤 값이나 변수 따위를 삽입하는 방법
-'''
-#2번째 프로젝트
+#3번째 프로젝트
+'''피자 가격 계산
+작은 사이즈:15$, 중간 사이즈 20$, 큰 사이즈 25$
+페퍼로니 추가:2$
+치즈추가 3$'''
 #내가 짠 코드
-print("Welcome to the tip calculator")
-bill = input("What was the total bill? $")
-tip = input("What percentage tip would you like to give? 10, 12, or 15?")
-people = input("How many people to split the bill?")
-tips = float(tip)*0.01
-tip = float(bill)*tips #TypeError: can't multiply sequence by non-int of type 'float' 라는 오류가 발생해 이렇게 코드를 작
-total=((float(bill)+tip)/int(people))
-print(round(total,2))
 
-#다른 사람이 짠 코드
-bill = float(input("What was the total bill? $"))
-tip = int(input("What percentage tip would you like to give? 10, 12, or 15?"))
-people = int(input("How many people to split the bill?"))
-bill_with_tip = tip / 100 * bill + bill # bill* (1 +tip/100) 도 가능
-total_bill = bill_with_tip/people
-final_amount = round(total_bill,2)
-print(f"Each person should pay: $ {final_amount}")
+print("Welcom to the Pizza Deliveries!")
+size = input("What size pizza do you want?")
+add_pepperoni = input("Do you want pepperoni?")
+extra_cheese = input("Do you want extra cheese?")
+total = 0
 
-'''오류가 났던 코드
-print("Welcome to the tip calculator")
-bill = input("What was the total bill? $")
-tip = input("What percentage tip would you like to give? 10, 12, or 15?")
-people = input("How many people to split the bill?")
-total = float(bill)+(float(tip)*0.01*bill)
+if size == "S":
+    total += 15
+    if add_pepperoni == "Y":
+        total += 2
+        if extra_cheese == "Y":
+            total += 3
+elif size =="M":
+    total += 20
+    if add_pepperoni == "Y":
+        total += 2
+        if extra_cheese == "Y":
+            total += 3
+else :
+    total += 25
+    if add_pepperoni == "Y":
+        total += 2
+        if extra_cheese == "Y":
+            total += 3
+
 print(total)
-#TypeError: can't multiply sequence by non-int of type 'float'발생
-에러 발생한 이유는 5번째 줄에 float(tip)*0.01까지는 정상적으로 실행되고 마지막에
-bill은 str 타입이라 str*float라는 상황이 되어서 오류가 발생함 
-'''
+#문제점: else문을 그대로 사용하면 이상한 값을 입력시 큰 사이즈 피자로 계산이 되기 때문에 else를 elif로 바꾸고 마지막에 else문에는 이상한 값이 입력되면 다시 입력하라는 내용을 추가하
+    
+#다른 사람이 짠 코드
+print("Welcom to the Pizza Deliveries!")
+size = input("What size pizza do you want?")
+add_pepperoni = input("Do you want pepperoni?")
+extra_cheese = input("Do you want extra cheese?")
+total = 0
+
+if size == "S":
+    total += 15
+elif size == "M":
+    total += 20
+else:
+    total += 25
+
+if add_pepperoni == "Y":
+    total += 2
+elif extra_cheese == "Y":
+    total += 3
+print(total)
